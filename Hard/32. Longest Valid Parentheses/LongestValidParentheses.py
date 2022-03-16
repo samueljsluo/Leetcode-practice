@@ -63,5 +63,34 @@ class Solution:
                 if len(stk) == 0:
                     length = 0
             return max_len
+        
+        def solution4(s):
+            left = 0
+            right = 0
+            max_len = 0
+            # left to right
+            for i in range(len(s)):
+                if s[i] == '(':
+                    left+=1
+                else:
+                    right+=1
+                if left == right: # valid paratheses
+                    max_len = max(max_len, left * 2)
+                if right > left: # invalid point
+                    left, right = 0, 0
+                    
+            left = 0
+            right = 0
+            # right to left
+            for i in range(len(s)-1, -1, -1):
+                if s[i] == '(':
+                    left+=1
+                else:
+                    right+=1
+                if left == right: # valid paratheses
+                    max_len = max(max_len, left * 2)
+                if right < left: # invalid point
+                    left, right = 0, 0
+            return max_len
         return stack(s)
             
