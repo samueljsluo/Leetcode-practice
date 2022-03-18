@@ -40,7 +40,9 @@ class Solution:
                 # 4 02040
                 if s[i] == ')' and \
                 i - dp[i - 1] - 1 >= 0 and \
-                s[i - dp[i - 1] - 1] == '(':
+                s[i - dp[i - 1] - 1] == '(':  
+                    # check there is valid parentheses
+                    # ())( prevent this case
                     dp[i] = 2 + dp[i-1] + dp[i - dp[i-1] - 2]
             return max(dp)
     
@@ -81,6 +83,7 @@ class Solution:
                     
             left = 0
             right = 0
+            
             # right to left
             for i in range(len(s)-1, -1, -1):
                 if s[i] == '(':
