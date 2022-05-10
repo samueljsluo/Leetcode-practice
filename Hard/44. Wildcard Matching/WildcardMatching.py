@@ -9,7 +9,7 @@ class Solution:
         dp = [[False for _ in range(n+1)] for i in range(m+1)]
         dp[0][0] = True
         
-        # dp[0][j] edge case
+        # dp[0][j] initialize for p='*a'
         for j in range(1, n+1):
             if p[j] != '*':
                 break
